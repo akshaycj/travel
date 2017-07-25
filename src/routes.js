@@ -13,7 +13,7 @@ const routes = {
   childRoutes: [
     {
         path: '/',
-        component: Details
+        component: App
     },
     {
         path:'/package',

@@ -10,10 +10,13 @@ import Single from './SinglePage';
 import Data from './Data';
 import { browserHistory,Router, Route } from 'react-router/lib';
 import routes from './routes';
-
+import {Provider} from 'react-redux';
+import {getStore} from './store.js'
 
 
 ReactDOM.render(
-  <Router history={browserHistory} routes={routes} />
+  <Provider store={getStore()}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>
 , document.getElementById('root'));
 registerServiceWorker();

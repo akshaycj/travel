@@ -4,6 +4,8 @@ import Img from 'react-image';
 import BookNow from './BookNow';
 import App from './App';
 import pic from './400.jpg'
+import {connect} from 'react-redux';
+import {packsel} from './reducers.js'
 import Responsive from 'react-responsive-decorator';
 var Carousel = require('react-responsive-carousel').Carousel;
 
@@ -17,6 +19,7 @@ var Carousel = require('react-responsive-carousel').Carousel;
     }
   }
   componentDidMount(){
+    console.log("data",this.props.data);
     this.props.media({ maxWidth: 768 }, () => {
     this.setState({
       dir:'column',cent:'center'
@@ -133,4 +136,8 @@ var Carousel = require('react-responsive-carousel').Carousel;
     )
   }
 }
-export default Responsive(SinglePack);
+
+const mapStateToProps = ({uiState}) => ({
+    data: packsel.data
+});
+export default connect()(Responsive(SinglePack));

@@ -17,11 +17,12 @@ import Coverflow from 'react-coverflow';
 import AutoResponsive from 'autoresponsive-react';
 import {storage, ref,str} from './constants';
 import { Link } from 'react-router/lib';
-
+import {connect} from 'react-redux';
+import {createSelectPackage} from './reducers.js'
 const Step =Steps.Step;
 
 const { Header, Sider, Content,Footer } = Layout;
-
+const data=[];
 
 class App extends Component {
 
@@ -88,6 +89,8 @@ getAutoResponsiveProps() {
     };
 }
 cat(data){
+  data = data;
+  this.props.onPackageSelect(data);
   //this.setState({data:data})
   console.log("asdasdajkj",this.data);
   //http://unsplash.it/1400/400?random
@@ -332,5 +335,11 @@ const l =[a1,a2,a3];
     );
   }
 }
-
-export default App;
+const mapDispatchToProps = (dispatch)=>(
+  {
+    onPackageSelect:(data)=>{
+      dispatch(createSelectPackage(data));
+    }
+  }
+)
+export default connect(null,mapDispatchToProps)(App)
