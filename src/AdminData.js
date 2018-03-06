@@ -20,6 +20,7 @@ export default class Data extends React.Component{
       progress:0,
       clicked:false,
       fileList:[],
+	pp:'',
       img:'',
       id:'',
     }
